@@ -1,0 +1,7 @@
+# Logs
+logs
+*.log
+.Diamond
+.DS_Store
+README.md
+cmd
