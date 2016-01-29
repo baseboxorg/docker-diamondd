@@ -1,14 +1,8 @@
 .gitignore
 data
-*.log
 README.md
 Dockerfile.template
-.Diamond
 src
 .DS_Store
-up.sh
-stop.sh
-.Diamond
-container.sh
-diamondd.cid
-dmd_oneshot
+cmd
+.vagrant
