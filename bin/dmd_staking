@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -ex
+
+echo "Activating DMD wallet..."
+dmd_oneshot
+
+echo "Wait for 10 mins..."
+sleep 600
+
+diamondd getinfo
+echo "Entering passphrase... through env setting..."
+echo $DMDPASS
+
+diamondd walletpassphrase $DMDPASS 99999999 true
+
+diamondd getinfo
+echo "Staking has enable successfully"
