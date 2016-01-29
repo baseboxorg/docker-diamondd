@@ -1,3 +1,4 @@
+
 #!/bin/bash
 #
 # Configure broken host machine to run correctly
@@ -23,16 +24,6 @@ DMD_IMAGE=${DMD_IMAGE:-baseboxorg/diamondd}
 
 #free -m
 
-#if [ "$distro" = "trusty" -o "$distro" = "ubuntu:14.04" ]; then
-#    curl https://get.docker.io/gpg | apt-key add -
-#    echo deb http://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
-
-    # Handle other parallel cloud init scripts that may lock the package database
-    # TODO: Add timeout
-#    while ! apt-get update; do sleep 10; done
-
-#    while ! apt-get install -y lxc-docker; do sleep 10; done
-#fi
 
 # Always clean-up, but fail successfully
 docker kill diamondd-data diamondd-node 2>/dev/null || true
@@ -45,8 +36,11 @@ if [ -z "${DMD_IMAGE##*/*}" ]; then
 fi
 
 # Initialize the data container
+echo "starting diamondd-data container..."
 docker run --name=diamondd-data -v /diamond busybox:latest chown 1000:1000 /diamond
+echo "copying diamond blockchain and wallet into diamondd-data..."
 docker cp ./vagrant/data/apps/diamondd/.Diamond diamondd-data:/diamond
+echo "done update diamondd-data"
 #docker run --volumes-from=diamondd-data --rm $DMD_IMAGE dmd_init
 
 # Start diamondd via upstart and docker
