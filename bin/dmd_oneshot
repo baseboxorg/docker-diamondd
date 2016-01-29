@@ -2,7 +2,7 @@
 
 set -ex
 
-dmd_init
+# dmd_init
 
 if [ $# -gt 0 ]; then
     args=("$@")
