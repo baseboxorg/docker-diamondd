@@ -11,5 +11,5 @@ pre-start script
   docker pull baseboxorg/diamondd || true
 end script
 script
-  exec docker run --rm --volumes-from=diamondd-data --name=diamondd-node --rm --env DMDPASS=$DMDPASS -p 17772:17772 -p 127.0.0.1:17771:17771 baseboxorg/diamondd
+  exec docker run --rm --volumes-from=diamondd-data --env DMDPASS=$DMDPASS --name=diamondd-node -p 17772:17772 -p 127.0.0.1:17771:17771 baseboxorg/diamondd
 end script

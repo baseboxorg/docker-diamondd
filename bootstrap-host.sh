@@ -7,6 +7,13 @@ set -ex
 
 DMD_IMAGE=${DMD_IMAGE:-baseboxorg/diamondd}
 
+#nano ~/.bash_profile
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+dpkg-reconfigure locales
+
 #distro=$1
 #shift
 
@@ -39,7 +46,7 @@ fi
 echo "starting diamondd-data container..."
 docker run --name=diamondd-data -v /diamond busybox:latest chown 1000:1000 /diamond
 echo "copying diamond blockchain and wallet into diamondd-data..."
-docker cp /vagrant/data/apps/diamondd/.Diamond diamondd-data:/diamond
+docker cp /vagrant/data/.Diamond diamondd-data:/diamond
 echo "done update diamondd-data"
 #docker run --volumes-from=diamondd-data --rm $DMD_IMAGE dmd_init
 
