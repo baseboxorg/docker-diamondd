@@ -1,7 +1,3 @@
-# Logs
-logs
-*.log
-.Diamond
+data
 .DS_Store
-README.md
-cmd
+.vagrant
