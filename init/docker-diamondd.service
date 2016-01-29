@@ -1,6 +1,6 @@
 
 [Unit]
-Description=Bitcoind Docker Container
+Description=Diamond Docker Container
 Documentation=https://github.com/baseboxorg/docker-diamondd
 After=network.target docker.socket
 Requires=docker.socket
@@ -10,9 +10,10 @@ RestartSec=10
 Restart=always
 
 # Modify IP6_PREFIX to match network config
-Environment="NAME=diamondd"
+Environment="NAME=diamondd-node"
 Environment="DATA_VOL=diamondd-data"
-Environment="IMG=baseboxorg/diamondd:dev"
+Environment="IMG=baseboxorg/diamondd"
+Environment="PORT=17771:17771/tcp"
 Environment="PORT=17772:17772/tcp"
 
 # To override environment variables, use local configuration directory:
