@@ -39,7 +39,7 @@ fi
 echo "starting diamondd-data container..."
 docker run --name=diamondd-data -v /diamond busybox:latest chown 1000:1000 /diamond
 echo "copying diamond blockchain and wallet into diamondd-data..."
-docker cp ./vagrant/data/apps/diamondd/.Diamond diamondd-data:/diamond
+docker cp /vagrant/data/apps/diamondd/.Diamond diamondd-data:/diamond
 echo "done update diamondd-data"
 #docker run --volumes-from=diamondd-data --rm $DMD_IMAGE dmd_init
 
